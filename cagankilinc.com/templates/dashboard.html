@@ -1,0 +1,69 @@
+<style>
+    #yazı{
+        color: white;
+    }
+
+    #yazı2{
+        color: white;
+    }
+    #hr{
+        background-color: white;
+    }
+
+    #sas{
+        background-color: aqua;
+        color: black;
+        border-color: aqua;
+    }
+
+    #alertt{
+        background-color: aqua;
+        color: black;
+        border-color: aqua;
+    }
+</style>
+
+
+{% extends "layout.html" %}
+
+{% block body %}
+  <h3 id="yazı">Kontrol Paneli</h3>
+  <small id="yazı2">Hoşgeldin, {{session["username"]}}</small>
+  <hr id="hr">
+
+  <a href="/addarticle" class="btn btn-danger" id="sas">Makale Ekle</a>
+  {% if articles %}
+
+  <table class="table table-striped table-dark">
+    <thead>
+      <tr>
+        <th scope="col">ID</th>
+        <th scope="col">Başlık</th>
+        <th scope="col">Yazar</th>
+        <th scope="col">Tarih</th>
+        <th scope="col"></th>
+        <th scope="col"></th>
+      </tr>
+    </thead>
+    <tbody>
+        {% for article in articles %}
+        <tr>
+            <th scope="row">{{article.id}}</th>
+            <td><a href="/article/{{article.id}}">{{article.title}}</a></td>
+            <th>{{article.author}}</th>
+            <td>{{article.created_date}}</td>
+            <td><a href="/edit/{{article.id}}" class="btn btn-danger"id="sas" >Güncelle</a></td>
+            <td><a href="/delete/{{article.id}}" class="btn btn-danger" id="sas" >Sil</a></td>
+
+
+        </tr>  
+        {% endfor %}
+    </tbody>
+  </table>
+
+  {% else %}
+  <div class="alert alert-danger" id="alertt">Henüz Makaleniz Bulunmuyor</div>
+  
+  {% endif %}
+  
+{% endblock body %}

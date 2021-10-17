@@ -1,0 +1,94 @@
+<style>
+    #giris_yap{
+        color: white;
+    }
+
+    form{
+        color: white;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        width: 40%;
+        margin-left: 29%;
+        border: 2px white solid;
+        padding: 1rem;
+        border-radius: 20px;
+
+    
+    }
+
+ 
+    h3{
+        display: inline-block;
+        margin-left: 29%;
+        border-bottom: 2px white solid;
+        
+    }
+
+    button{
+        margin-top: 0%;
+        background-color: aqua;
+        box-shadow: 
+        0 0 7px #fff,
+        0 0 10px #fff,
+        0 0 21px #fff,
+        
+        0 0 25px aqua,
+        0 0 25px aqua,
+        0 0 25px aqua,
+        0 0 25px aqua,
+        0 0 25px aqua;
+        
+    }
+
+    #giris{
+        margin-top: 5%;
+        box-shadow: 
+        0 0 7px #fff,
+        0 0 10px #fff,
+        0 0 21px #fff,
+        
+        0 0 10px aqua,
+        0 0 10px aqua,
+        0 0 10px aqua,
+        0 0 10px aqua,
+        0 0 60px aqua;
+
+    }
+
+    @media (max-width:1281px){
+
+        
+    form{
+        display: flex;
+        flex-direction: column;
+        margin-left: 7%;
+        width: 80%;
+        border: 2px white solid;
+        padding: 1rem;
+        border-radius: 20px;
+    }
+    
+    h3{
+        margin-left: 7%;
+    }
+    
+  }
+
+</style>
+
+
+{% extends "layout.html" %}
+{% block body %}
+{% from "formhelpers.html" import render_field %}
+<h3 id="giris_yap">Giriş Yap</h3>
+<hr>
+<form method="POST">
+    {{render_field(form.username, class = "form-control") }}
+    {{render_field(form.password, class = "form-control") }}
+    <button type="submit" class="btn " id="giris">Giriş Yap</button>
+    
+</form>
+
+
+{% endblock body %}

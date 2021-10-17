@@ -1,0 +1,140 @@
+<style>
+
+ 
+
+    .buscar-caja { 
+      position: absolute; 
+      left: 50%; 
+      margin-top: -2rem;
+      transform: translate(-50%, -50%); 
+      background: #fff; 
+      border-radius: 40px; 
+      padding: 10px;
+    
+    }
+    
+    
+    .buscar-caja:hover > .buscar-txt 
+    {
+      width: 7rem; 
+      padding: 0 6px; 
+    } 
+    .buscar-caja:hover > .buscar-btn {
+      background: white; 
+      color: black; 
+    } 
+    
+    .buscar-btn { 
+    
+      float: right; 
+      width: 40px; 
+      height: 40px; 
+      border-radius: 50%; 
+      
+      display: flex; 
+      justify-content: center; 
+      align-items: center; 
+      transition: 0.4s; 
+      color: white; 
+      cursor: pointer; 
+    } 
+    .buscar-btn > i 
+    { 
+      font-size: 18px; 
+    } 
+    .buscar-txt { 
+      border: none; 
+      background: none; 
+      outline: none; 
+      float: left; 
+      padding: 0; 
+      color: #333; 
+      font-size: 16px; 
+      transition: 0.4s; 
+      line-height: 40px; 
+      width: 0px; 
+      font-weight: bold; 
+    }
+    
+    .btn-primary{
+        background: #fff;
+        color: #CB356B;
+        border: none;
+    }
+    
+    
+      #contain{
+            
+            left: 20.5%;
+            border: 2px aqua solid;
+            text-align: center;
+            margin: 0.4%;
+            margin-top: 4%;
+            border-radius: 15%;
+            width: 60%;
+            height: auto;
+            word-wrap: break-word;
+            color: white;
+            background-color: rgb(5, 4, 4);
+    
+        }
+      #contain a{
+        text-align: center;
+        border: none;
+        color: white;
+    
+      }
+    
+      #contain:hover{
+        background-color: rgb(16, 20, 20);
+    
+      }
+    
+      #h3{
+        color: white;
+        text-align: center;
+        letter-spacing: 0.05rem;
+        bottom: 100px;
+    
+    
+      }
+    
+      #hr{
+        background-color: green;
+        width: 12%;
+        margin-bottom: 5rem;
+        height: 3px;
+      }
+    </style>
+    
+    {% extends "layout.html" %}
+  
+    
+    {% block body %}
+      <h3 id="h3">Paylaşımlar</h3>
+      <hr id="hr">
+      
+    
+    {% if comments %}
+    <form action="/searchc" method="POST">
+      <div class="buscar-caja"> 
+          <input type="text" name="keyword1" class="buscar-txt" placeholder="Ara..."/> 
+          <a class="buscar-btn"> <i class="fa fa-search"></i> </a>   
+          
+         </div> 
+    
+    </form>
+    
+    
+    <ul class="list-group">
+        {% for comment in comments %}
+        <li class="list-group-item" id="contain"><a href="comment/{{comment.id}}">Başlık: <strong> {{comment.title}} </strong> <br> Kullanıcı: <strong>{{comment.user}}</strong></a></li>
+        {% endfor %}
+    </ul>
+      
+    {% else %}
+    <div class="alert alert-danger">Burada Henüz Paylaşım Yayınlanmamıştır</div>
+
+    {% endif %}
+    
+    {% endblock body %}
