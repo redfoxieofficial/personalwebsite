@@ -1,0 +1,69 @@
+<style>
+    #alert{
+        border-color: black;
+        background-color: aqua;
+        color: black;
+    }
+
+    .divbruh{
+        margin-top: 1%;
+        border: 0.75px aqua solid;
+        border-radius: 4%;
+        width: auto;
+        height: auto;
+        opacity: 0.8;
+        word-wrap: break-word;
+        color: white;
+        background-color: rgb(5, 4, 4);
+        text-align: center;
+
+    }
+
+    #cizgi{
+        border-color: white;
+        
+    }
+
+    #yazi{
+        margin: 1.3%;
+        color: white;
+        text-align: center;
+    }
+
+  
+    .list-group-item{
+        color: black;
+        background-color: black;
+    }
+
+
+    #article img{ 
+        padding:0 10px 10px 0;
+        
+    }
+
+</style>
+{% extends "layout.html" %}
+
+{% block body %}
+{% if comment %}
+
+<div class="divbruh">
+
+<h4 id="yazi">{{comment.title}}</h4>
+<hr id="cizgi">
+<h6 id="yazi">Kullanıcı : {{comment.user}} </h6>
+<hr id="cizgi">
+<h6 id="yazi">Tarih : {{comment.created_date}} </h6>
+<hr id="cizgi">
+<p id="article">{{comment.content|safe}}</p> <!--HTML KODLARINI FİLTRELİYOR-->
+
+</div>
+
+
+{% else %}
+  
+<div class="alert alert-warning" id="alert">Böyle Bir Paylaşım  Bulunmuyor</div>
+{% endif %}
+
+{% endblock body %}
